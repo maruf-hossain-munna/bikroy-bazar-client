@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Navbar = () => {
+    const {user, logOut} = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logOut()
+            .then()
+            .catch(err => console.error(err))
+    }
 
     const menuItems = <>
         <li className='font-semibold'><Link to='/'>Home</Link></li>
         <li className='font-semibold'><Link to='/blogs'>Blogs</Link></li>
-        <li className='font-semibold'><Link to='/signup'>Sign Up</Link></li>
-        <li className='font-semibold'><Link to='/signin'>Sign In</Link></li>
+        {/* <li className='font-semibold'><Link to='/signup'>Sign Up</Link></li>
+        <li className='font-semibold'><Link to='/signin'>Sign In</Link></li> */}
         {/* {
             user?.uid &&
             <>
@@ -44,7 +52,7 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                {/* <div className="navbar-end">
+                <div className="navbar-end">
                     {
                         user?.uid ?
 
@@ -54,7 +62,7 @@ const Navbar = () => {
                             <Link to='/signin' className='btn btn-ghost'>Sign in</Link>
 
                     }
-                </div> */}
+                </div>
             </div>
         </div>
     );
