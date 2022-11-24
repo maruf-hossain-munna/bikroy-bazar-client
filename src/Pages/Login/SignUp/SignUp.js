@@ -6,7 +6,7 @@ const SignUp = () => {
     // className="hero-content grid gap-10 md:grid-cols-2 flex-col lg:flex-row"  flex-shrink-0
     return (
         <div>
-            <div className=" w-96 mx-auto my-20">
+            <div className=" lg:w-1/4 w-full mx-auto my-20">
                 <div className="card  w-full  shadow-2xl bg-base-100 py-6">
                     <form className="card-body">
                         <h1 className="text-4xl font-bold text-center">Sign Up</h1>
@@ -27,7 +27,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Select your position</span>
                             </label>
-                            <select className="select select-bordered w-full max-w-xs">
+                            <select className="select select-bordered w-full ">
                                 <option selected>Buyer</option>
                                 <option>Seller</option>
                             </select>
