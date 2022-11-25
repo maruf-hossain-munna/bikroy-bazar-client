@@ -16,7 +16,7 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         const selected = form.selected.value;
-        console.log(name, email, password, selected) 
+        // console.log(name, email, password, selected) 
 
         createUser(email, password)
             .then(result => {
@@ -24,16 +24,16 @@ const SignUp = () => {
                 console.log(user);
                 toast.success('Registration Succesful');
                 saveUser(name, email)
-                handleUpdateUser(name)
+                handleUpdateUser(name, selected)
                 // navigate('/signin')
             })
             .catch(error => console.log(error));
     }
 
-    const handleUpdateUser = (name, photoURL) => {
+    const handleUpdateUser = (name, selected) => {
         const profile = {
             displayName: name,
-            photoURL,
+            selected,
             
         }
         updateUser(profile)

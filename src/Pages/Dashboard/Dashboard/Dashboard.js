@@ -6,6 +6,7 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 const Dashboard = () => {
     const { user } = useContext(AuthContext)
     const [isAdmin] = useAdmin(user?.email)
+    console.log(user);
     return (
         <div className='container mx-auto'>
             <h2 className='text-3xl font-semibold text-center'>This is Dashboard</h2>
