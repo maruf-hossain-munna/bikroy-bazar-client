@@ -12,7 +12,6 @@ const SignUp = () => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
-        const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
         const selected = form.selected.value;
@@ -22,7 +21,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                handleUpdateUser(name, photoURL)
+                handleUpdateUser(name)
                 navigate('/signin')
             })
             .catch(error => console.log(error));
@@ -50,12 +49,12 @@ const SignUp = () => {
                             </label>
                             <input type="text" name='name' placeholder="name" className="input input-bordered" />
                         </div>
-                        <div className="form-control">
+                        {/* <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
                             <input type="text" name='photoURL' placeholder="Photo URL" className="input input-bordered" />
-                        </div>
+                        </div> */}
 
                         <div className="form-control">
                             <label className="label">

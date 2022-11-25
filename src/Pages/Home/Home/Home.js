@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import HomeTopBanner from './HomeTopBanner';
 
 const Home = () => {
@@ -9,10 +9,15 @@ const Home = () => {
         <div className='container mx-auto'>
             <HomeTopBanner></HomeTopBanner>
 
-            <div >
-                {
-                    categories.map( category =>  <p> { category.category} </p>)
-                }
+            <div className='mb-14'>
+                <h2 className="text-3xl text-center mb-10 font-semibold">Categories</h2>
+                <div className='grid grid-cols-4'>
+                    {
+                        categories.map(category => <p key={category._id}>
+                            <Link className='btn btn-ghost text-xl'> {category.categoryName} </Link>
+                        </p>)
+                    }
+                </div>
             </div>
         </div>
     );

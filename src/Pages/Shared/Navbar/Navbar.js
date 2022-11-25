@@ -12,19 +12,16 @@ const Navbar = () => {
     }
 
     const menuItems = <>
-        <li className='font-semibold'><Link to='/'>Home</Link></li>
+        <li className='font-semibold '><Link to='/'>Home</Link></li>
         <li className='font-semibold'><Link to='/blogs'>Blogs</Link></li>
-        {/* <li className='font-semibold'><Link to='/signup'>Sign Up</Link></li>
-        <li className='font-semibold'><Link to='/signin'>Sign In</Link></li> */}
-        {/* {
+        {
             user?.uid &&
             <>
-                <li className='font-semibold'><Link to='/myreviews'>My Reviews</Link></li>
-                <li className='font-semibold'><Link to='/addService'>Add Service</Link></li>
+                <li className='font-semibold'><Link to='/dashboard'>Dashboard</Link></li>
 
             </>
 
-        } */}
+        }
 
 
     </>
@@ -44,11 +41,11 @@ const Navbar = () => {
                     </div>
                     <Link to='/' className="btn btn-ghost normal-case text-xl">
                         {/* <img src={logo} alt="" /> */}
-                        Bikroy Bazar
+                        Bikroy  <span className='text-red-500 ml-2'> Bazar</span>
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal p-0">
+                    <ul className="menu  menu-horizontal p-0">
                         {menuItems}
                     </ul>
                 </div>
