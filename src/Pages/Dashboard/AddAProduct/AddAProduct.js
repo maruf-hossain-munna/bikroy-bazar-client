@@ -10,13 +10,13 @@ const AddAProduct = () => {
     // console.log(imgHostKey);
     const [categories, setCategories] = useState();
 
-    useEffect( () =>{
+    useEffect(() => {
         fetch('http://localhost:5000/categories')
-        .then( res => res.json())
-        .then(data => {
-            setCategories(data)
-        })
-    } ,[])
+            .then(res => res.json())
+            .then(data => {
+                setCategories(data)
+            })
+    }, [])
 
 
     const handleAddProduct = data => {
@@ -24,6 +24,8 @@ const AddAProduct = () => {
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
+        console.log(data.category.value)
+
         const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imgHostKey}`
 
         fetch(url, {
@@ -33,35 +35,36 @@ const AddAProduct = () => {
             .then(res => res.json())
             .then(imgData => {
                 // console.log(imgData)
-                if(imgData.success){
+                if (imgData.success) {
                     // console.log(imgData.data.url);
-
                     const product = {
-                        name : data.name,
-                        category : data.category,
-                        price : data.price,
-                        email : data.email,
-                        usedMonth : data.usedMonth,
-                        condition : data.condition,
-                        phone : data.phone,
-                        location : data.location,
-                        description : data.description,
-                        image : imgData.data.url
+                        name: data.name,
+                        category_Name: data.category,
+                        categoryId : data.category._id,
+                        price: data.price,
+                        email: data.email,
+                        usedMonth: data.usedMonth,
+                        condition: data.condition,
+                        phone: data.phone,
+                        location: data.location,
+                        description: data.description,
+                        image: imgData.data.url
                     }
 
-                    fetch('http://localhost:5000/products', {
-                        method : 'POST',
-                        headers : {
-                            'content-type' : 'application/json'
-                        },
-                        body : JSON.stringify(product)
-                    })
-                    .then( res => res.json())
-                    .then( result =>{
-                        console.log(result);
-                        toast.success('Your product added successful');
 
+                    fetch('http://localhost:5000/products', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(product)
                     })
+                        .then(res => res.json())
+                        .then(result => {
+                            // console.log(result);
+                            toast.success('Your product added successful');
+
+                        })
                 }
             })
 
@@ -81,19 +84,21 @@ const AddAProduct = () => {
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
                     </div>
+
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Category</span></label>
 
                         <select {...register('category')} className="select select-bordered w-full ">
-                            
+
                             {
-                                categories?.map( category => <option
+                                categories?.map(category => <option
                                     key={category._id}
                                     value={category}
-                                > {category.categoryName} </option> )
+                                > {category.categoryName} </option>)
                             }
                         </select>
                     </div>
+
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Price</span></label>
                         <input type="number" {...register("price", {

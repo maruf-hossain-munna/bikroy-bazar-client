@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import useAdmin from '../../../Hooks/useAdmin';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Dashboard = () => {
+    const { user } = useContext(AuthContext)
+    const [isAdmin] = useAdmin(user?.email)
     return (
         <div className='container mx-auto'>
             <h2 className='text-3xl font-semibold text-center'>This is Dashboard</h2>
@@ -20,9 +24,14 @@ const Dashboard = () => {
                         <li> <Link to=''>My Products</Link>  </li>
                         <li> <Link to=''>My buyers</Link>  </li>
 
-                        <li> <Link to=''>All Sellers</Link>  </li>
-                        <li> <Link to=''>All Buyers</Link>  </li>
-                        <li> <Link to=''>Reported Items</Link>  </li>
+                        {
+                            isAdmin && <>
+                                <li> <Link to='allusers'>All Users</Link>  </li>
+                                <li> <Link to=''>All Sellers</Link>  </li>
+                                <li> <Link to=''>All Buyers</Link>  </li>
+                                <li> <Link to=''>Reported Items</Link>  </li>
+                            </>
+                        }
                     </ul>
 
                 </div>

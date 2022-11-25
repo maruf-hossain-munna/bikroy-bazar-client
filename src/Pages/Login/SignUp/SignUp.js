@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 
@@ -21,8 +22,10 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                toast.success('Registration Succesful');
+                saveUser(name, email)
                 handleUpdateUser(name)
-                navigate('/signin')
+                // navigate('/signin')
             })
             .catch(error => console.log(error));
     }
@@ -30,11 +33,41 @@ const SignUp = () => {
     const handleUpdateUser = (name, photoURL) => {
         const profile = {
             displayName: name,
-            photoURL
+            photoURL,
+            
         }
         updateUser(profile)
-            .then(() => { })
+            .then(() => { 
+                
+            })
             .catch(err => console.error(err))
+    }
+
+    const saveUser = (name, email) =>{
+        const user = {name, email};
+        fetch('http://localhost:5000/users', {
+            method : 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then( res => res.json())
+        .then( data => {
+            getUserToken(email)
+            console.log('save user'  , data);
+        })
+    }
+
+    const getUserToken = email =>{
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+        .then( res => res.json())
+        .then( data =>{
+            if(data){
+                localStorage.setItem('accessToken', data.accessToken)
+                navigate('/signin')
+            }
+        })
     }
 
     return (
