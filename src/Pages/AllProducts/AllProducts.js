@@ -19,15 +19,16 @@ const AllProducts = () => {
     }
 
     return (
-        <div className='container mx-auto'>
-            {/* <div className='grid grid-cols-3 gap-10'>
+        <div className='container mx-auto my-16'>
+            <h3 className="text-4xl text-center font-semibold text-blue-600 mb-8"> Advertise Product </h3>
+            <div className='grid grid-cols-3 gap-10'>
                 {
                     products?.map( product => <ShowProduct
                         key={product._id}
                         product={product}
                     ></ShowProduct> )
                 }
-            </div> */}
+            </div>
         </div>
     );
 };

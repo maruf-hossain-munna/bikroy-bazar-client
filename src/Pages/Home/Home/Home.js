@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import AllProducts from '../../AllProducts/AllProducts';
+import HomeBanner from './HomeBanner/HomeBanner';
 import HomeTopBanner from './HomeTopBanner';
 
 const Home = () => {
@@ -7,9 +9,12 @@ const Home = () => {
     console.log(categories);
     return (
         <div className='container mx-auto'>
-            <HomeTopBanner></HomeTopBanner>
 
-            <div className='mb-14'>
+            <HomeBanner></HomeBanner>
+            
+            <AllProducts></AllProducts>
+
+            <div className='my-14 mt-20'>
                 <h2 className="text-3xl text-center mb-10 font-semibold">Categories</h2>
                 <div className='grid grid-cols-4'>
                     {
@@ -19,6 +24,8 @@ const Home = () => {
                     }
                 </div>
             </div>
+
+            <HomeTopBanner></HomeTopBanner>
         </div>
     );
 };

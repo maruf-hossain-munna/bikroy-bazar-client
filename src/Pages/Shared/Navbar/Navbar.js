@@ -1,3 +1,4 @@
+import logo from '../../../Assests/images/bikroy-bazar-logo.png';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
