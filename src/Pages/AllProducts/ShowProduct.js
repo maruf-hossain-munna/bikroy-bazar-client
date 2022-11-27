@@ -2,16 +2,42 @@ import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 
 const ShowProduct = ({ product }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const { name, image, phone, description, location, _id, price, usedMonth, condition, createDate } = product;
+    const navigate = useNavigate();
 
-    const handleBook = (data) =>{
-        console.log(data);
-        toast.success(`Your ${name} Booked Successful`)
+
+    const handleBook = (data) => {
+        // console.log(data);
+
+        const bookingProduct = {
+            buyerName: data.name,
+            email: data.email,
+            productName: data.productName,
+            price: data.price,
+            buyerPhone: data.phone,
+            mettingLocation: data.location
+        }
+
+        fetch('http://localhost:5000/bookingProducts', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(bookingProduct)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                toast.success(`Your ${name} Booked Successful`);
+                navigate('/myOrders')
+            })
+
     }
 
     return (
@@ -42,7 +68,7 @@ const ShowProduct = ({ product }) => {
             <div className="modal">
                 <div className="modal-box relative">
                     <label htmlFor="bookModal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    
+
 
                     <div className='w-96 p-7 mx-auto rounded-xl shadow-2xl'>
                         <h1 className="text-3xl font-semibold text-center mb-2">Booking Your Product</h1>
@@ -66,7 +92,7 @@ const ShowProduct = ({ product }) => {
 
                             <div className="form-control w-full max-w-xs">
                                 <label className="label"> <span className="label-text"> Product Name</span></label>
-                                <input defaultValue={name} readOnly  type="text" {...register("productName", {
+                                <input defaultValue={name} readOnly type="text" {...register("productName", {
                                     required: "Product Name is Required"
                                 })} className="input input-bordered w-full max-w-xs" />
                                 {errors.productName && <p className='text-red-500'>{errors.productName.message}</p>}
@@ -79,7 +105,7 @@ const ShowProduct = ({ product }) => {
                                 })} className="input input-bordered w-full max-w-xs" />
                                 {errors.price && <p className='text-red-500'>{errors.price.message}</p>}
                             </div>
-                            
+
                             <div className="form-control w-full max-w-xs">
                                 <label className="label"> <span className="label-text">Your Phone Number</span></label>
                                 <input type="number" {...register("phone", {
