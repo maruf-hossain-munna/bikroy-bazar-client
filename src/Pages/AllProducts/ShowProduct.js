@@ -13,8 +13,6 @@ const ShowProduct = ({ product }) => {
 
 
     const handleBook = (data) => {
-        // console.log(data);
-
         const bookingProduct = {
             buyerName: data.name,
             email: data.email,
@@ -24,7 +22,7 @@ const ShowProduct = ({ product }) => {
             mettingLocation: data.location
         }
 
-        fetch('http://localhost:5000/bookingProducts', {
+        fetch(`http://localhost:5000/bookingProducts/`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -37,7 +35,6 @@ const ShowProduct = ({ product }) => {
                 toast.success(`Your ${name} Booked Successful`);
                 navigate('/myOrders')
             })
-
     }
 
     return (

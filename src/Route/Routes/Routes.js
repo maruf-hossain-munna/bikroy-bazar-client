@@ -14,7 +14,9 @@ import SignIn from "../../Pages/Login/SignIn/SignIn";
 import SignUp from "../../Pages/Login/SignUp/SignUp";
 import PageNotFound from "../../Pages/PageNotFound/PageNotFound";
 import AdminRoute from "../AdminRoute/AdminRoute";
+import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 
 const routes = createBrowserRouter ([
@@ -41,7 +43,7 @@ const routes = createBrowserRouter ([
             },
             {
                 path: '/dashboard/addProducts',
-                element: <AddAProduct></AddAProduct>
+                element: <AddAProduct></AddAProduct> 
             },
             {
                 path: '/myOrders',
