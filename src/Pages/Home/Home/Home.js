@@ -14,7 +14,7 @@ const Home = () => {
                 <div className='grid grid-cols-4'>
                     {
                         categories.map(category => <p key={category._id}>
-                            <Link className='btn btn-ghost text-xl'> {category.categoryName} </Link>
+                            <Link to={`/category/${category.categoryId}`} className='btn btn-ghost text-xl'> {category.categoryName} </Link>
                         </p>)
                     }
                 </div>

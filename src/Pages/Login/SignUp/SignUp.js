@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
@@ -15,7 +15,7 @@ const SignUp = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        const selected = form.selected.value;
+        const role = form.role.value;
         // console.log(name, email, password, selected) 
 
         createUser(email, password)
@@ -23,17 +23,17 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user);
                 toast.success('Registration Succesful');
-                saveUser(name, email)
-                handleUpdateUser(name, selected)
+                saveUser(name, email, role)
+                handleUpdateUser(name, role)
                 // navigate('/signin')
             })
             .catch(error => console.log(error));
     }
 
-    const handleUpdateUser = (name, selected) => {
+    const handleUpdateUser = (name, role) => {
         const profile = {
             displayName: name,
-            selected,
+            role,
             
         }
         updateUser(profile)
@@ -43,8 +43,8 @@ const SignUp = () => {
             .catch(err => console.error(err))
     }
 
-    const saveUser = (name, email) =>{
-        const user = {name, email};
+    const saveUser = (name, email, role) =>{
+        const user = {name, email, role};
         fetch('http://localhost:5000/users', {
             method : 'POST',
             headers: {
@@ -58,6 +58,10 @@ const SignUp = () => {
             console.log('save user'  , data);
         })
     }
+
+    // useEffect(() =>{
+    //     fetch(`http://localhost:5000/users/seller/${}`)
+    // }  ,[])
 
     const getUserToken = email =>{
         fetch(`http://localhost:5000/jwt?email=${email}`)
@@ -93,7 +97,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Select your position</span>
                             </label>
-                            <select name='selected' className="select select-bordered w-full ">
+                            <select name='role' className="select select-bordered w-full ">
                                 <option selected>Buyer</option>
                                 <option>Seller</option>
                             </select>

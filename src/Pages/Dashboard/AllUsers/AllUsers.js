@@ -32,7 +32,7 @@ const AllUsers = () => {
 
     return (
         <div className='container mx-auto'>
-            <h2>All users</h2>
+            <h2 className='my-8 text-center text-3xl font-semibold'>All Users</h2>
 
             <div className="overflow-x-auto">
                 <table className="table w-full">
@@ -54,7 +54,7 @@ const AllUsers = () => {
                                 <td> {user.name} </td>
                                 <td> {user.email} </td>
                                 <td> { user?.role !== 'admin' &&  <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-primary font-semibold '>Make Admin</button>} </td>
-                                <td> <button className='btn  font-semibold '>Delete</button> </td>
+                               
                             </tr>)
                         }
 

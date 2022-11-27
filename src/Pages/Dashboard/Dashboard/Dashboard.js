@@ -28,8 +28,8 @@ const Dashboard = () => {
                         {
                             isAdmin && <>
                                 <li> <Link to='allusers'>All Users</Link>  </li>
-                                <li> <Link to=''>All Sellers</Link>  </li>
-                                <li> <Link to=''>All Buyers</Link>  </li>
+                                <li> <Link to='allseller'>All Sellers</Link>  </li>
+                                <li> <Link to='allBuyer'>All Buyers</Link>  </li>
                                 <li> <Link to=''>Reported Items</Link>  </li>
                             </>
                         }

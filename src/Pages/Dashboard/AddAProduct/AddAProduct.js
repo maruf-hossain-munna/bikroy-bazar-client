@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const AddAProduct = () => {
@@ -9,24 +10,26 @@ const AddAProduct = () => {
     const imgHostKey = process.env.REACT_APP_imgbb_key;
     // console.log(imgHostKey);
     const [categories, setCategories] = useState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('http://localhost:5000/categories')
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 setCategories(data)
             })
     }, [])
 
 
     const handleAddProduct = data => {
-        // console.log(data.image[0]);
+        console.log(data);
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
-        console.log(data.category.value)
+        console.log(data.category.value);
 
-        const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imgHostKey}`
+        const url = `https://api.imgbb.com/1/upload?key=${imgHostKey}`
 
         fetch(url, {
             method: 'POST',
@@ -37,10 +40,11 @@ const AddAProduct = () => {
                 // console.log(imgData)
                 if (imgData.success) {
                     // console.log(imgData.data.url);
+                    // console.log(data.category, data.category.categoryName, data.category._id)
                     const product = {
                         name: data.name,
-                        category_Name: data.category,
-                        categoryId : data.category._id,
+                        // category_Name: data.category,
+                        categoryId: data.category,
                         price: data.price,
                         email: data.email,
                         usedMonth: data.usedMonth,
@@ -48,7 +52,8 @@ const AddAProduct = () => {
                         phone: data.phone,
                         location: data.location,
                         description: data.description,
-                        image: imgData.data.url
+                        image: imgData.data.url,
+                        createDate : new Date()
                     }
 
 
@@ -63,12 +68,13 @@ const AddAProduct = () => {
                         .then(result => {
                             // console.log(result);
                             toast.success('Your product added successful');
-
+                            navigate('/dashboard')
                         })
                 }
             })
 
     };
+
 
 
     return (
@@ -86,17 +92,17 @@ const AddAProduct = () => {
                     </div>
 
                     <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Category</span></label>
-
-                        <select {...register('category')} className="select select-bordered w-full ">
+                        <label className="label"> <span className="label-text">Category Name</span></label>
+                        <select  {...register('category')} className="select select-bordered w-full ">
 
                             {
                                 categories?.map(category => <option
                                     key={category._id}
-                                    value={category}
+                                    value={category.categoryId}
                                 > {category.categoryName} </option>)
                             }
                         </select>
+
                     </div>
 
                     <div className="form-control w-full max-w-xs">
