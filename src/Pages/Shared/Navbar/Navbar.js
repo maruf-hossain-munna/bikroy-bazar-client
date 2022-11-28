@@ -1,4 +1,4 @@
-import logo from '../../../Assests/images/bikroy-bazar-logo.png';
+import logo from '../../../Assests/logo/bikroy-bazar-logo.png';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
@@ -42,7 +42,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link to='/' className="btn btn-ghost normal-case text-xl">
-                        {/* <img src={logo} alt="" /> */}
+                        {/* <img className='rounded-2xl w-full' src={logo} alt="" /> */}
                         Bikroy  <span className='text-red-500 ml-2'> Bazar</span>
                     </Link>
                 </div>
