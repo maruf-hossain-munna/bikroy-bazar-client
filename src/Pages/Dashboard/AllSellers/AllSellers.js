@@ -6,7 +6,7 @@ const AllSellers = () => {
     const { data: sellers = [] } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/user/seller')
+            const res = await fetch('https://bikroy-bazar-server-maruf21hossain.vercel.app/user/seller')
             const data = await res.json()
             return data;
 
@@ -15,7 +15,7 @@ const AllSellers = () => {
 
     const handleDelete = (seller) =>{
         console.log(seller._id);
-        fetch(`http://localhost:5000/user/seller/${seller._id}`, {
+        fetch(`https://bikroy-bazar-server-maruf21hossain.vercel.app/user/seller/${seller._id}`, {
             method: 'DELETE', 
             
         })

@@ -13,7 +13,7 @@ const Products = () => {
     // const {data = []} = useQuery({
     //     queryKey: ['products', params.id],
     //     queryFn: async () =>{
-    //         const res = await axios.get(`http://localhost:5000/category/${params.id}`);
+    //         const res = await axios.get(`https://bikroy-bazar-server-maruf21hossain.vercel.app/category/${params.id}`);
     //         console.log(res);
     //         return res.data;
     //     }
@@ -22,7 +22,7 @@ const Products = () => {
     const { data: products = [] } = useQuery({
         queryKey: ['products', params.id],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/category/${params.id}`);
+            const res = await fetch(`https://bikroy-bazar-server-maruf21hossain.vercel.app/category/${params.id}`);
             const data = await res.json();
             // console.log(data);
             return data;

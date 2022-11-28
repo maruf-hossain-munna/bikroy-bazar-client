@@ -13,7 +13,7 @@ const AddAProduct = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
+        fetch('https://bikroy-bazar-server-maruf21hossain.vercel.app/categories')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -53,11 +53,13 @@ const AddAProduct = () => {
                         location: data.location,
                         description: data.description,
                         image: imgData.data.url,
-                        createDate: new Date()
+                        createDate: new Date(),
+                        reported : false,
+                        reportedCount : 0
                     }
 
 
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://bikroy-bazar-server-maruf21hossain.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

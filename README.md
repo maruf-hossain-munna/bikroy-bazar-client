@@ -68,3 +68,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+--------------------------------------------------
+
+My Projects:----
+ Name: Bikroy Bazar
+ Live website link : https://bikroy-bazar-8754e.web.app
+
+Projects summary:---
+* It has a navbar and footer. Navbar has Home, Blog and dashboard for user and also a sign in button.
+* Email password based and google based authentication by firebase.
+* When you sign up this site you have two option Buyer or seller.. If you are seller you can added your sell post and see your dashboard.. 
+* If you are a buyer you can buy any product and report any products if you want.
+* it has admin dashboard where an admin see all users, all buyers and all Sellers.
+* finally this site is protected by jwt token and everyone have different routes.

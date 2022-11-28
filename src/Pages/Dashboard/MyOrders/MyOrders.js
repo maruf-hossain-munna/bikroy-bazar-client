@@ -8,7 +8,7 @@ const MyOrders = () => {
     const { data: orders , isLoading} = useQuery({
         queryKey: ['myOrders', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookingProducts?email=${user?.email}`)
+            const res = await fetch(`https://bikroy-bazar-server-maruf21hossain.vercel.app/bookingProducts?email=${user?.email}`)
             const data = await res.json();
             console.log(data)
             return data;

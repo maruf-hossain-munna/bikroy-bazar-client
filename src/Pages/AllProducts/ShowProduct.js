@@ -9,7 +9,7 @@ import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 const ShowProduct = ({ product }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { user } = useContext(AuthContext)
-    const { name, productName, image, phone, description, location, _id, price, usedMonth, condition, createDate } = product;
+    const { name, productName, reported, reportedCount,  image, phone, description, location, _id, price, usedMonth, condition, createDate } = product;
     const navigate = useNavigate();
     const [isBuyer] = useBuyer(user?.email)
 
@@ -24,7 +24,7 @@ const ShowProduct = ({ product }) => {
             mettingLocation: data.location
         }
 
-        fetch(`http://localhost:5000/bookingProducts/`, {
+        fetch(`https://bikroy-bazar-server-maruf21hossain.vercel.app/bookingProducts/`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -39,9 +39,12 @@ const ShowProduct = ({ product }) => {
             })
     }
 
-    const handleReport = (_id) => {
+    const handleReport = (_id, reportedCount) => {
         console.log(_id);
-        fetch(`http://localhost:5000/reported/${_id}`)
+        fetch(`https://bikroy-bazar-server-maruf21hossain.vercel.app/reported/${_id}?reportedCount=${reportedCount}`, {
+            method: 'PATCH',
+
+        })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -70,7 +73,7 @@ const ShowProduct = ({ product }) => {
                         isBuyer ?
                             <div className="flex justify-between mt-4">
                                 <label htmlFor="bookModal" className="btn btn-primary">Book Now</label>
-                                <button onClick={() => handleReport(_id)} className="btn btn-error">Report</button>
+                                <button onClick={() => handleReport(_id, reportedCount )} className="btn btn-error">Report</button>
                             </div>
                             :
                             <h2 className="text-error text-xl font-semibold"> If You Want to buy this product! Please login your buyer account</h2>

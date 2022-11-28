@@ -6,7 +6,7 @@ const AllBuyers = () => {
     const { data: buyers = [] } = useQuery({
         queryKey: ['buyers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/user/buyer')
+            const res = await fetch('https://bikroy-bazar-server-maruf21hossain.vercel.app/user/buyer')
             const data = await res.json()
             return data;
 

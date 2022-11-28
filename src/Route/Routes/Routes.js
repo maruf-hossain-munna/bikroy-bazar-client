@@ -29,7 +29,7 @@ const routes = createBrowserRouter ([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/categories')
+                loader: () => fetch('https://bikroy-bazar-server-maruf21hossain.vercel.app/categories')
             },
             {
                 path: '/category/:id',
@@ -58,7 +58,7 @@ const routes = createBrowserRouter ([
             {
                 path: '/dashboard/allusers',
                 element: <AdminRoute><AllUsers></AllUsers></AdminRoute>,
-                loader : () => fetch('http://localhost:5000/users')
+                loader : () => fetch('https://bikroy-bazar-server-maruf21hossain.vercel.app/users')
             },
             {
                 path: '/dashboard/allseller',
