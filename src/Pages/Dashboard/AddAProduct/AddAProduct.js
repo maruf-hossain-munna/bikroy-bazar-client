@@ -109,7 +109,7 @@ const AddAProduct = () => {
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Category Name</span></label>
-                        <select  {...register('category')} className="select select-bordered w-full ">
+                        <select value='Select one'  {...register('category')} className="select select-bordered w-full ">
 
                             {
                                 categories?.map(category => <option

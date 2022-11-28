@@ -72,8 +72,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 --------------------------------------------------
 
 My Projects:----
- Name: Bikroy Bazar
- Live website link : https://bikroy-bazar-8754e.web.app
+* Name: Bikroy Bazar
+* Live website link : https://bikroy-bazar-8754e.web.app
 
 Projects summary:---
 * It has a navbar and footer. Navbar has Home, Blog and dashboard for user and also a sign in button.
@@ -82,3 +82,6 @@ Projects summary:---
 * If you are a buyer you can buy any product and report any products if you want.
 * it has admin dashboard where an admin see all users, all buyers and all Sellers.
 * finally this site is protected by jwt token and everyone have different routes.
+
+* Sir it has a simple mistake. If a user created first time he/she want to go Dashboard . the page is loading but if the user refresh the page. Then it will okay and next don't face this problem. it is only for first time. 
+* and also a problem when the seller add a products if he don't click any category default are Iphone category not working. database receive no category. But if the seller click category drop down and then select iphone or any then it's working.  That's mean default value has empty. I cant fixed it. I am trying but not solve. please forgive this mistake..... 
