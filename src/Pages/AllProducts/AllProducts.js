@@ -22,7 +22,7 @@ const AllProducts = () => {
     return (
         <div className='container mx-auto my-16'>
             <h3 className="text-4xl text-center font-semibold text-blue-600 mb-8"> Advertise Product </h3>
-            <div className='grid grid-cols-3 gap-10'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10'>
                 {
                     products?.map( product => <AdvertiseProduct
                         key={product._id}

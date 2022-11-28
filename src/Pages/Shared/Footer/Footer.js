@@ -7,11 +7,11 @@ const Footer = () => {
 
             <footer className="footer p-10 bg-base-200 text-base-content">
                 <div>
-                    <span className="footer-title">Services</span>
-                    <a className="link link-hover">Cardiology Service</a>
-                    <a className="link link-hover">Neurology Service</a>
-                    <a className="link link-hover">Nephrology Service</a>
-                    <a className="link link-hover">Gastrology Service</a>
+                    <span className="footer-title">Categories</span>
+                    <a className="link link-hover">Iphone</a>
+                    <a className="link link-hover">Samsung</a>
+                    <a className="link link-hover">Xioami</a>
+                    <a className="link link-hover">Realme</a>
                 </div>
                 <div>
                     <span className="footer-title">Bikroy Bazar</span>

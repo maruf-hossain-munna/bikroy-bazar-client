@@ -43,17 +43,17 @@ const AddAProduct = () => {
                     // console.log(data.category, data.category.categoryName, data.category._id)
                     const product = {
                         name: data.name,
-                        // category_Name: data.category,
-                        categoryId: data.category,
-                        price: data.price,
                         email: data.email,
+                        categoryId: data.category,
+                        productName : data.productName,
+                        price: data.price,
                         usedMonth: data.usedMonth,
                         condition: data.condition,
                         phone: data.phone,
                         location: data.location,
                         description: data.description,
                         image: imgData.data.url,
-                        createDate : new Date()
+                        createDate: new Date()
                     }
 
 
@@ -68,7 +68,7 @@ const AddAProduct = () => {
                         .then(result => {
                             // console.log(result);
                             toast.success('Your product added successful');
-                            navigate('/dashboard')
+                            navigate('/dashboard/myProducts')
                         })
                 }
             })
@@ -84,11 +84,25 @@ const AddAProduct = () => {
                 <form onSubmit={handleSubmit(handleAddProduct)}
                     className=''>
                     <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Product Name</span></label>
-                        <input type="text" {...register("name", {
+                        <label className="label"> <span className="label-text"> Name</span></label>
+                        <input defaultValue={user?.displayName} readOnly type="text" {...register("name", {
                             required: "Name is Required"
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label"> <span className="label-text">Email</span></label>
+                        <input defaultValue={user?.email} readOnly type="email" {...register("email", {
+                            required: true
+                        })} className="input input-bordered w-full max-w-xs" />
+                        {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label"> <span className="label-text">Product Name</span></label>
+                        <input type="text" {...register("productName", {
+                            required: "Product Name is Required"
+                        })} className="input input-bordered w-full max-w-xs" />
+                        {errors.productName && <p className='text-red-500'>{errors.productName.message}</p>}
                     </div>
 
                     <div className="form-control w-full max-w-xs">
@@ -112,13 +126,7 @@ const AddAProduct = () => {
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.price && <p className='text-red-500'>{errors.price.message}</p>}
                     </div>
-                    <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Email</span></label>
-                        <input defaultValue={user?.email} readOnly type="email" {...register("email", {
-                            required: true
-                        })} className="input input-bordered w-full max-w-xs" />
-                        {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
-                    </div>
+
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Used of Month</span></label>
                         <input type="number" {...register("usedMonth", {

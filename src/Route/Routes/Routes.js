@@ -9,6 +9,7 @@ import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
+import ReportedItems from "../../Pages/Dashboard/ReportedItems/ReportedItems";
 import Home from "../../Pages/Home/Home/Home";
 import Products from "../../Pages/Home/Products/Products";
 import SignIn from "../../Pages/Login/SignIn/SignIn";
@@ -66,6 +67,10 @@ const routes = createBrowserRouter ([
             {
                 path: '/dashboard/allBuyer',
                 element : <AdminRoute> <AllBuyers></AllBuyers> </AdminRoute>
+            },
+            {
+                path: '/dashboard/reportedItemd',
+                element : <AdminRoute> <ReportedItems></ReportedItems> </AdminRoute>
             },
             {
                 path : '/signup',

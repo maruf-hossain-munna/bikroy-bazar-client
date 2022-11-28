@@ -3,13 +3,15 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import useBuyer from '../../Hooks/useBuyer';
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 
 const ShowProduct = ({ product }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { user } = useContext(AuthContext)
-    const { name, image, phone, description, location, _id, price, usedMonth, condition, createDate } = product;
+    const { name, productName, image, phone, description, location, _id, price, usedMonth, condition, createDate } = product;
     const navigate = useNavigate();
+    const [isBuyer] = useBuyer(user?.email)
 
 
     const handleBook = (data) => {
@@ -37,30 +39,42 @@ const ShowProduct = ({ product }) => {
             })
     }
 
-    const handleReport = () =>{
-        toast.success('Your Report Successfully done')
+    const handleReport = (_id) => {
+        console.log(_id);
+        fetch(`http://localhost:5000/reported/${_id}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                toast.success('Your Report Successfully done')
+            })
     }
 
     return (
         <div>
 
 
-            <div className="card w-96 bg-base-100 shadow-2xl">
-                <figure><img src={image} alt="Shoes" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">{name} </h2>
-                    <p>Price: {price}$ </p>
+            <div className="card  bg-base-100 shadow-2xl">
+                <figure><img className='h-1/2 w-1/2' src={image} alt="Shoes" /></figure>
+                <div className="card-body -mt-8">
+                    <h2 className="card-title">{productName} </h2>
+                    <p className='font-semibold'>Price: {price}$ </p>
                     <p>Condition: {condition} </p>
                     <p>Used : {usedMonth} Months </p>
+                    <p>Posted by : {name} </p>
                     <p>Phone : {phone}</p>
                     <p>Location : {location} </p>
                     <p> {description}</p>
-                    <p>Post Date: {format(new Date(createDate), 'PP')} </p>
-                    <p>Post Time: {format(new Date(createDate), 'pp')} </p>
-                    <div className="flex justify-between mt-4">
-                        <label htmlFor="bookModal" className="btn btn-primary">Book Now</label>
-                        <button onClick={handleReport} className="btn btn-primary">Report</button>
-                    </div>
+                    {/* <p>Post Date: {format(new Date(createDate), 'PP')} || {format(new Date(createDate), 'pp')} </p> */}
+                    <p>Post Time : {format(new Date(createDate), 'pp')} , {format(new Date(createDate), 'PP')}</p>
+                    {
+                        isBuyer ?
+                            <div className="flex justify-between mt-4">
+                                <label htmlFor="bookModal" className="btn btn-primary">Book Now</label>
+                                <button onClick={() => handleReport(_id)} className="btn btn-error">Report</button>
+                            </div>
+                            :
+                            <h2 className="text-error text-xl font-semibold"> If You Want to buy this product! Please login your buyer account</h2>
+                    }
                 </div>
             </div>
 
