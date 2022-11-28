@@ -15,7 +15,7 @@ const Home = () => {
             <AllProducts></AllProducts>
 
             <div className='my-14 mt-20'>
-                <h2 className="text-3xl text-center mb-10 font-semibold">All Categories</h2>
+                <h2 className="text-4xl text-center text-blue-600 mb-10 font-semibold divider">All Categories</h2>
                 <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8'>
                     {
                         categories.map(category => <p key={category._id}>

@@ -34,8 +34,7 @@ const Products = () => {
 
     return (
         <div className='container mx-auto my-14'>
-
-            <h2 className="text-4xl my-12 text-center divider font-semibold"> Products </h2>
+            <h2 className="text-4xl text-center text-blue-600 my-12 font-semibold divider">Products</h2>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-12'>
                 {
                     products.map(product => <ShowProduct
