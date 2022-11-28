@@ -15,11 +15,11 @@ const Home = () => {
             <AllProducts></AllProducts>
 
             <div className='my-14 mt-20'>
-                <h2 className="text-3xl text-center mb-10 font-semibold">Categories</h2>
-                <div className='grid grid-cols-4'>
+                <h2 className="text-3xl text-center mb-10 font-semibold">All Categories</h2>
+                <div className='grid grid-cols-4 gap-8'>
                     {
                         categories.map(category => <p key={category._id}>
-                            <Link to={`/category/${category.categoryId}`} className='btn btn-ghost w-full h-20 hover:shadow-xl text-xl'> {category.categoryName} </Link>
+                            <Link to={`/category/${category.categoryId}`} className='btn btn-ghost bg-base-300 w-full h-20 hover:shadow-xl text-xl'> {category.categoryName} </Link>
                         </p>)
                     }
                 </div>

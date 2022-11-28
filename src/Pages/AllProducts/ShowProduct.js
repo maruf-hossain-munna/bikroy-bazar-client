@@ -37,6 +37,10 @@ const ShowProduct = ({ product }) => {
             })
     }
 
+    const handleReport = () =>{
+        toast.success('Your Report Successfully done')
+    }
+
     return (
         <div>
 
@@ -55,7 +59,7 @@ const ShowProduct = ({ product }) => {
                     <p>Post Time: {format(new Date(createDate), 'pp')} </p>
                     <div className="flex justify-between mt-4">
                         <label htmlFor="bookModal" className="btn btn-primary">Book Now</label>
-                        <button className="btn btn-primary">Report</button>
+                        <button onClick={handleReport} className="btn btn-primary">Report</button>
                     </div>
                 </div>
             </div>
