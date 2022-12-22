@@ -9,10 +9,9 @@ const HomeBanner = () => {
                 <div className="hero-content text-center text-neutral-content">
                     <div className="">
                         <h1 className="mb-5 text-5xl text-white uppercase font-bold">Join Our Bikroy Bazar </h1>
-                        <h2 className="text-4xl">checked</h2>
                         <h1 className="mb-5 text-5xl text-blue-700 uppercase font-bold">RESELL SHOP IN BD </h1>
                         <p className="mb-5 text-xl">You can choose your any necessary here in cheap price without any hassles. <br />
-                            And You can sell your unnecessary products. 
+                            And You can sell your any unnecessary products. 
                         </p>
                         <Link to='/signup'><button className="btn btn-primary px-12 text-lg mt-6"> Join Us</button></Link> 
                     </div>
